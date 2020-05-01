@@ -7,3 +7,10 @@
 /obj
 /.vs/BinarySearchTree/v16
 .vs/BinarySearchTree/DesignTimeBuild/.dtbcache
+/BinarySearchTree/obj
+/BinarySearchTree/bin/Debug/netcoreapp3.1
+/BinarySearchTree/.vs/BinarySearchTree
+/BinarySearchTree.Tests/bin/Debug/netcoreapp3.1
+/BinarySearchTree.Tests/obj
+/BinarySearchTree.Logic/bin/Debug/netcoreapp3.1
+/BinarySearchTree.Logic/obj
