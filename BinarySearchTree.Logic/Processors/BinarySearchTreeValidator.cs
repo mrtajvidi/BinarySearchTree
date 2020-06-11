@@ -9,7 +9,7 @@ namespace BinarySearchTree.Logic.Processors
             return IsWithinRange(root, int.MinValue, int.MaxValue);
         }
 
-        private bool IsWithinRange(TreeNode node, int lowerValue, int upperValue)
+        private bool IsWithinRange(TreeNode node, int? lowerValue, int? upperValue)
         {
             if (node == null) return true;
 
