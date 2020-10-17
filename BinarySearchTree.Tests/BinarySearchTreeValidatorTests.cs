@@ -1,4 +1,3 @@
-using BinarySearchTree.Logic;
 using BinarySearchTree.Logic.Models;
 using BinarySearchTree.Logic.Processors;
 using Xunit;

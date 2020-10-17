@@ -1,4 +1,3 @@
-using BinarySearchTree.Logic;
 using BinarySearchTree.Logic.Models;
 using BinarySearchTree.Logic.Processors;
 using Xunit;
@@ -20,7 +19,7 @@ namespace BinarySearchTree.Tests
             var root = new TreeNode { Value = 20 };
             var node100 = new TreeNode { Value = 100 };
             var node50 = new TreeNode { Value = 50 };
-            var node222 = new TreeNode {Value = 222};
+            var node222 = new TreeNode { Value = 222 };
             var node15 = new TreeNode { Value = 15 };
             var node3 = new TreeNode { Value = 3 };
             var node250 = new TreeNode { Value = 250 };
@@ -40,7 +39,6 @@ namespace BinarySearchTree.Tests
             var actual = _traversalService.LevelOrderTraversal(root);
             Assert.Equal("201003501525035222", actual);
         }
-
 
         [Fact]
         public void BT_PreOrderTraversal_ReturnTrue()
@@ -68,7 +66,6 @@ namespace BinarySearchTree.Tests
             var actual = _traversalService.PreOrderTraversal(root);
             Assert.Equal("201005022215325035", actual);
         }
-
 
         [Fact]
         public void BT_InOrderTraversal_ReturnTrue()
@@ -123,6 +120,5 @@ namespace BinarySearchTree.Tests
             var actual = _traversalService.PostOrderTraversal(root);
             Assert.Equal("222501510025035320", actual);
         }
-
     }
 }

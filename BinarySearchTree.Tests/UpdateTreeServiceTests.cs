@@ -1,4 +1,3 @@
-using BinarySearchTree.Logic;
 using BinarySearchTree.Logic.Models;
 using BinarySearchTree.Logic.Processors;
 using Xunit;
@@ -28,15 +27,13 @@ namespace BinarySearchTree.Tests
             Assert.Equal("140", actual);
         }
 
-
-
         [Fact]
         public void BT_InsertIntoBT_ReturnTrue()
         {
             var root = new TreeNode { Value = 20 };
             var node100 = new TreeNode { Value = 100 };
             var node50 = new TreeNode { Value = 50 };
-            var node222 = new TreeNode {Value = 222};
+            var node222 = new TreeNode { Value = 222 };
             var node15 = new TreeNode { Value = 15 };
             var node3 = new TreeNode { Value = 3 };
             var node250 = new TreeNode { Value = 250 };
@@ -59,8 +56,5 @@ namespace BinarySearchTree.Tests
             var actual = _traversalService.LevelOrderTraversal(result);
             Assert.Equal("201003501525035222140", actual);
         }
-
-
-
     }
 }

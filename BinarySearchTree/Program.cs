@@ -1,8 +1,4 @@
-﻿using BinarySearchTree.Logic;
-using System;
-using BinarySearchTree.Logic.Processors;
-
-namespace BinarySearchTree
+﻿namespace BinarySearchTree
 {
     internal class Program
     {
@@ -13,7 +9,6 @@ namespace BinarySearchTree
 
         private static void ValidateABinarySearchTree()
         {
-
         }
     }
 }

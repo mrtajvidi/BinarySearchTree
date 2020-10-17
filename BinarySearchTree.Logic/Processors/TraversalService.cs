@@ -29,7 +29,7 @@ namespace BinarySearchTree.Logic.Processors
         public string PreOrderTraversal(TreeNode node)
         {
             var result = string.Empty;
-            if (node == null) 
+            if (node == null)
                 return result;
 
             return $"{node?.Value}{PreOrderTraversal(node.LeftNode)}{PreOrderTraversal(node.RightNode)}";

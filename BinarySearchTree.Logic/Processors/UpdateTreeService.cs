@@ -1,7 +1,5 @@
-﻿using System;
+﻿using BinarySearchTree.Logic.Models;
 using System.Collections.Generic;
-using System.Text;
-using BinarySearchTree.Logic.Models;
 
 namespace BinarySearchTree.Logic.Processors
 {
@@ -48,7 +46,6 @@ namespace BinarySearchTree.Logic.Processors
             return root;
         }
 
-
         public TreeNode DeleteNode(TreeNode root, TreeNode nodeToBeInserted)
         {
             if (root.Value == null)
@@ -89,7 +86,5 @@ namespace BinarySearchTree.Logic.Processors
 
             return root;
         }
-
-
     }
 }
