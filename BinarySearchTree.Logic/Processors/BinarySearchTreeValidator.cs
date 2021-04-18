@@ -13,11 +13,11 @@ namespace BinarySearchTree.Logic.Processors
         {
             if (node == null) return true;
 
-            if (node.Value <= lowerValue || node.Value >= upperValue) return false;
+            if (node.val <= lowerValue || node.val >= upperValue) return false;
 
-            if (!IsWithinRange(node.RightNode, node.Value, upperValue)) return false;
+            if (!IsWithinRange(node.right, node.val, upperValue)) return false;
 
-            if (!IsWithinRange(node.LeftNode, lowerValue, node.Value)) return false;
+            if (!IsWithinRange(node.left, lowerValue, node.val)) return false;
 
             return true;
         }

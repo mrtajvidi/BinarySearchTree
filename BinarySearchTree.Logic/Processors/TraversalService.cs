@@ -17,10 +17,10 @@ namespace BinarySearchTree.Logic.Processors
                 var firstElement = queue.Peek();
                 if (firstElement == null) break;
 
-                queue.Enqueue(firstElement.LeftNode);
-                queue.Enqueue(firstElement.RightNode);
+                queue.Enqueue(firstElement.left);
+                queue.Enqueue(firstElement.right);
                 var output = queue.Dequeue();
-                result += output?.Value.ToString();
+                result += output?.val.ToString();
             }
 
             return result;
@@ -32,7 +32,7 @@ namespace BinarySearchTree.Logic.Processors
             if (node == null)
                 return result;
 
-            return $"{node?.Value}{PreOrderTraversal(node.LeftNode)}{PreOrderTraversal(node.RightNode)}";
+            return $"{node?.val}{PreOrderTraversal(node.left)}{PreOrderTraversal(node.right)}";
         }
 
         public string InOrderTraversal(TreeNode node)
@@ -41,7 +41,7 @@ namespace BinarySearchTree.Logic.Processors
             if (node == null)
                 return result;
 
-            return $"{InOrderTraversal(node.LeftNode)}{node?.Value}{InOrderTraversal(node.RightNode)}";
+            return $"{InOrderTraversal(node.left)}{node?.val}{InOrderTraversal(node.right)}";
         }
 
         public string PostOrderTraversal(TreeNode node)
@@ -50,7 +50,29 @@ namespace BinarySearchTree.Logic.Processors
             if (node == null)
                 return result;
 
-            return $"{PostOrderTraversal(node.LeftNode)}{PostOrderTraversal(node.RightNode)}{node?.Value}";
+            return $"{PostOrderTraversal(node.left)}{PostOrderTraversal(node.right)}{node?.val}";
+        }
+
+        public TreeNode InorderSuccessorBst(TreeNode root, TreeNode p)
+        {
+
+            TreeNode successor = null;
+
+            while (root != null)
+            {
+
+                if (p.val >= root.val)
+                {
+                    root = root.right;
+                }
+                else
+                {
+                    successor = root;
+                    root = root.left;
+                }
+            }
+
+            return successor;
         }
     }
 }

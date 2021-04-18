@@ -20,7 +20,7 @@ namespace BinarySearchTree.Tests
         {
             var root = new TreeNode();
 
-            var nodeToBeInserted = new TreeNode { Value = 140 };
+            var nodeToBeInserted = new TreeNode { val = 140 };
 
             var result = _updateTreeService.InsertNode(root, nodeToBeInserted);
             var actual = _traversalService.LevelOrderTraversal(result);
@@ -30,27 +30,27 @@ namespace BinarySearchTree.Tests
         [Fact]
         public void BT_InsertIntoBT_ReturnTrue()
         {
-            var root = new TreeNode { Value = 20 };
-            var node100 = new TreeNode { Value = 100 };
-            var node50 = new TreeNode { Value = 50 };
-            var node222 = new TreeNode { Value = 222 };
-            var node15 = new TreeNode { Value = 15 };
-            var node3 = new TreeNode { Value = 3 };
-            var node250 = new TreeNode { Value = 250 };
-            var node35 = new TreeNode { Value = 35 };
+            var root = new TreeNode { val = 20 };
+            var node100 = new TreeNode { val = 100 };
+            var node50 = new TreeNode { val = 50 };
+            var node222 = new TreeNode { val = 222 };
+            var node15 = new TreeNode { val = 15 };
+            var node3 = new TreeNode { val = 3 };
+            var node250 = new TreeNode { val = 250 };
+            var node35 = new TreeNode { val = 35 };
 
-            root.LeftNode = node100;
-            root.RightNode = node3;
+            root.left = node100;
+            root.right = node3;
 
-            node3.LeftNode = node250;
-            node3.RightNode = node35;
+            node3.left = node250;
+            node3.right = node35;
 
-            node100.LeftNode = node50;
-            node100.RightNode = node15;
+            node100.left = node50;
+            node100.right = node15;
 
-            node50.LeftNode = node222;
+            node50.left = node222;
 
-            var nodeToBeInserted = new TreeNode { Value = 140 };
+            var nodeToBeInserted = new TreeNode { val = 140 };
 
             var result = _updateTreeService.InsertNode(root, nodeToBeInserted);
             var actual = _traversalService.LevelOrderTraversal(result);

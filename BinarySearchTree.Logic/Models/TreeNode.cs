@@ -2,8 +2,8 @@
 {
     public class TreeNode
     {
-        public int? Value { get; set; }
-        public TreeNode LeftNode { get; set; }
-        public TreeNode RightNode { get; set; }
+        public int? val { get; set; }
+        public TreeNode left { get; set; }
+        public TreeNode right { get; set; }
     }
 }

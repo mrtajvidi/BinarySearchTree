@@ -7,7 +7,7 @@ namespace BinarySearchTree.Logic.Processors
     {
         public TreeNode InsertNode(TreeNode root, TreeNode nodeToBeInserted)
         {
-            if (root.Value == null)
+            if (root.val == null)
             {
                 root = nodeToBeInserted;
                 return root;
@@ -21,24 +21,24 @@ namespace BinarySearchTree.Logic.Processors
                 var firstElement = queue.Peek();
                 if (firstElement == null) break;
 
-                if (firstElement.LeftNode == null)
+                if (firstElement.left == null)
                 {
-                    firstElement.LeftNode = nodeToBeInserted;
+                    firstElement.left = nodeToBeInserted;
                     break;
                 }
                 else
                 {
-                    queue.Enqueue(firstElement.LeftNode);
+                    queue.Enqueue(firstElement.left);
                 }
 
-                if (firstElement.RightNode == null)
+                if (firstElement.right == null)
                 {
-                    firstElement.RightNode = nodeToBeInserted;
+                    firstElement.right = nodeToBeInserted;
                     break;
                 }
                 else
                 {
-                    queue.Enqueue(firstElement.RightNode);
+                    queue.Enqueue(firstElement.right);
                 }
                 queue.Dequeue();
             }
@@ -48,7 +48,7 @@ namespace BinarySearchTree.Logic.Processors
 
         public TreeNode DeleteNode(TreeNode root, TreeNode nodeToBeInserted)
         {
-            if (root.Value == null)
+            if (root.val == null)
             {
                 root = nodeToBeInserted;
                 return root;
@@ -62,24 +62,24 @@ namespace BinarySearchTree.Logic.Processors
                 var firstElement = queue.Peek();
                 if (firstElement == null) break;
 
-                if (firstElement.LeftNode == null)
+                if (firstElement.left == null)
                 {
-                    firstElement.LeftNode = nodeToBeInserted;
+                    firstElement.left = nodeToBeInserted;
                     break;
                 }
                 else
                 {
-                    queue.Enqueue(firstElement.LeftNode);
+                    queue.Enqueue(firstElement.left);
                 }
 
-                if (firstElement.RightNode == null)
+                if (firstElement.right == null)
                 {
-                    firstElement.RightNode = nodeToBeInserted;
+                    firstElement.right = nodeToBeInserted;
                     break;
                 }
                 else
                 {
-                    queue.Enqueue(firstElement.RightNode);
+                    queue.Enqueue(firstElement.right);
                 }
                 queue.Dequeue();
             }
