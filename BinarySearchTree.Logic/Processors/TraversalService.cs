@@ -55,12 +55,10 @@ namespace BinarySearchTree.Logic.Processors
 
         public TreeNode InorderSuccessorBst(TreeNode root, TreeNode p)
         {
-
             TreeNode successor = null;
 
             while (root != null)
             {
-
                 if (p.val >= root.val)
                 {
                     root = root.right;
@@ -74,5 +72,35 @@ namespace BinarySearchTree.Logic.Processors
 
             return successor;
         }
+
+        public TreeNode SearchBSTRecursion(TreeNode root, int val)
+        {
+            if (root == null)
+                return null;
+
+            if (root.val == val) return root;
+
+            if (root.val > val)
+            {
+                return SearchBSTRecursion(root.left, val);
+            }
+            else
+            {
+                return SearchBSTRecursion(root.right, val);
+            }
+        }
+
+        public TreeNode SearchBSTIteration(TreeNode root, int val)
+        {
+            while (root != null && val != root.val)
+            {
+                root = root.val > val ? root.left : root.right;
+            }
+            return root;
+        }
+
+        //public TreeNode InsertIntoBST(TreeNode root, int val)
+        //{
+        //}
     }
 }
