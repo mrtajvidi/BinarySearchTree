@@ -5,7 +5,64 @@ namespace BinarySearchTree.Logic.Processors
 {
     public class UpdateTreeService
     {
-        public TreeNode InsertNode(TreeNode root, TreeNode nodeToBeInserted)
+        public TreeNode InsertIntoBSTRecursive(TreeNode root, int val)
+        {
+            if (root == null)
+            {
+                return new TreeNode { val = val };
+            }
+            if (root.val < val)
+            {           // insert to the right subtree if val > root->val
+                root.right = InsertIntoBSTRecursive(root.right, val);
+            }
+            else
+            {                        // insert to the left subtree if val <= root->val
+                root.left = InsertIntoBSTRecursive(root.left, val);
+            }
+            return root;
+        }
+
+        public TreeNode InsertIntoBstIteration(TreeNode root, int val)
+        {
+            if (root == null)
+            {
+                return new TreeNode { val = val };
+            }
+
+            var curr = root;
+            while (curr != null)
+            {
+                var firstElement = curr;
+
+                if (firstElement.val > val)
+                {
+                    if (firstElement.left == null)
+                    {
+                        firstElement.left = new TreeNode { val = val };
+                        break;
+                    }
+                    else
+                    {
+                        curr = firstElement.left;
+                    }
+                }
+                else
+                {
+                    if (firstElement.right == null)
+                    {
+                        firstElement.right = new TreeNode { val = val };
+                        break;
+                    }
+                    else
+                    {
+                        curr = firstElement.right;
+                    }
+                }
+            }
+            return root;
+        }
+
+        public TreeNode InsertNodeIteration(TreeNode root, TreeNode nodeToBeInserted)
         {
             if (root.val == null)
             {
@@ -46,42 +103,55 @@ namespace BinarySearchTree.Logic.Processors
             return root;
         }
 
-        public TreeNode DeleteNode(TreeNode root, TreeNode nodeToBeInserted)
+        public TreeNode SuccessorBst(TreeNode root)
         {
-            if (root.val == null)
+            root = root.right;
+            while (root.left != null)
             {
-                root = nodeToBeInserted;
-                return root;
+                root = root.left;
             }
+            return root;
+        }
 
-            var queue = new Queue<TreeNode>();
-            queue.Enqueue(root);
-
-            while (queue.Count > 0)
+        public TreeNode PredecessorBst(TreeNode root)
+        {
+            root = root.left;
+            while (root.right != null)
             {
-                var firstElement = queue.Peek();
-                if (firstElement == null) break;
+                root = root.right;
+            }
+            return root;
+        }
 
-                if (firstElement.left == null)
+        public TreeNode DeleteNode(TreeNode root, int key)
+        {
+            if (root == null) return null;
+
+            if (root.val > key)
+            {
+                root.right = DeleteNode(root.left, key);
+            }
+            else if (root.val < key)
+            {
+                root.left = DeleteNode(root.right, key);
+            }
+            else
+            {
+                // node is a leaf
+                if (root.left == null && root.right == null)
                 {
-                    firstElement.left = nodeToBeInserted;
-                    break;
+                    root = null;
+                }
+                else if (root.right != null)
+                {
+                    root.val = SuccessorBst(root).val;
+                    root.right = DeleteNode(root.right, root.val ?? 0);
                 }
                 else
                 {
-                    queue.Enqueue(firstElement.left);
+                    root.val = PredecessorBst(root).val;
+                    root.left = DeleteNode(root.left, root.val ?? 0);
                 }
-
-                if (firstElement.right == null)
-                {
-                    firstElement.right = nodeToBeInserted;
-                    break;
-                }
-                else
-                {
-                    queue.Enqueue(firstElement.right);
-                }
-                queue.Dequeue();
             }
 
             return root;

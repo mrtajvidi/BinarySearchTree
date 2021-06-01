@@ -144,5 +144,27 @@ namespace BinarySearchTree.Tests
             var actual = _traversalService.InorderSuccessorBst(root, p);
             Assert.Equal(root.val, actual.val);
         }
+
+        [Fact]
+        public void SuccessorBst_ReturnTrue()
+        {
+            var root = new TreeNode { val = 4 };
+            var node2 = new TreeNode { val = 2 };
+            var node1 = new TreeNode { val = 1 };
+            var node7 = new TreeNode { val = 7 };
+            var node3 = new TreeNode { val = 3 };
+            var node5 = new TreeNode { val = 5 };
+
+            root.left = node2;
+            root.right = node7;
+
+            node2.left = node1;
+            node2.right = node3;
+
+            node7.left = node5;
+
+            var result = _traversalService.SuccessorBst(root);
+            Assert.Equal(5, result.val);
+        }
     }
 }

@@ -22,7 +22,7 @@ namespace BinarySearchTree.Tests
 
             var nodeToBeInserted = new TreeNode { val = 140 };
 
-            var result = _updateTreeService.InsertNode(root, nodeToBeInserted);
+            var result = _updateTreeService.InsertNodeIteration(root, nodeToBeInserted);
             var actual = _traversalService.LevelOrderTraversal(result);
             Assert.Equal("140", actual);
         }
@@ -52,9 +52,53 @@ namespace BinarySearchTree.Tests
 
             var nodeToBeInserted = new TreeNode { val = 140 };
 
-            var result = _updateTreeService.InsertNode(root, nodeToBeInserted);
+            var result = _updateTreeService.InsertNodeIteration(root, nodeToBeInserted);
             var actual = _traversalService.LevelOrderTraversal(result);
             Assert.Equal("201003501525035222140", actual);
+        }
+
+        [Fact]
+        public void BT_InsertIntoBSTRecursive_ReturnTrue()
+        {
+            var root = new TreeNode { val = 4 };
+            var node2 = new TreeNode { val = 2 };
+            var node1 = new TreeNode { val = 1 };
+            var node7 = new TreeNode { val = 7 };
+            var node3 = new TreeNode { val = 3 };
+
+            root.left = node2;
+            root.right = node7;
+
+            node2.left = node1;
+            node2.right = node3;
+
+            var nodeToBeInserted = new TreeNode { val = 5 };
+
+            var result = _updateTreeService.InsertIntoBSTRecursive(root, 5);
+            var actual = _traversalService.LevelOrderTraversal(result);
+            Assert.Equal("427135", actual);
+        }
+
+        [Fact]
+        public void BT_InsertIntoBSTIteration_ReturnTrue()
+        {
+            var root = new TreeNode { val = 4 };
+            var node2 = new TreeNode { val = 2 };
+            var node1 = new TreeNode { val = 1 };
+            var node7 = new TreeNode { val = 7 };
+            var node3 = new TreeNode { val = 3 };
+
+            root.left = node2;
+            root.right = node7;
+
+            node2.left = node1;
+            node2.right = node3;
+
+            var nodeToBeInserted = new TreeNode { val = 5 };
+
+            var result = _updateTreeService.InsertIntoBstIteration(root, 5);
+            var actual = _traversalService.LevelOrderTraversal(result);
+            Assert.Equal("427135", actual);
         }
     }
 }

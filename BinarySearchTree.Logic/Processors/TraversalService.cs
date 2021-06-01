@@ -73,7 +73,7 @@ namespace BinarySearchTree.Logic.Processors
             return successor;
         }
 
-        public TreeNode SearchBSTRecursion(TreeNode root, int val)
+        public TreeNode SearchBstRecursion(TreeNode root, int val)
         {
             if (root == null)
                 return null;
@@ -82,15 +82,15 @@ namespace BinarySearchTree.Logic.Processors
 
             if (root.val > val)
             {
-                return SearchBSTRecursion(root.left, val);
+                return SearchBstRecursion(root.left, val);
             }
             else
             {
-                return SearchBSTRecursion(root.right, val);
+                return SearchBstRecursion(root.right, val);
             }
         }
 
-        public TreeNode SearchBSTIteration(TreeNode root, int val)
+        public TreeNode SearchBstIteration(TreeNode root, int val)
         {
             while (root != null && val != root.val)
             {
@@ -99,8 +99,26 @@ namespace BinarySearchTree.Logic.Processors
             return root;
         }
 
-        //public TreeNode InsertIntoBST(TreeNode root, int val)
-        //{
-        //}
+        public TreeNode SuccessorBst(TreeNode root)
+        {
+            root = root.right;
+            while (root.left != null)
+            {
+                root = root.left;
+            }
+            return root;
+        }
+
+        public TreeNode PredecessorBst(TreeNode root)
+        {
+            root = root.left;
+            while (root.right != null)
+            {
+                root = root.right;
+            }
+            return root;
+        }
+
+
     }
 }
