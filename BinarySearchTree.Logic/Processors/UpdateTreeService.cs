@@ -5,6 +5,25 @@ namespace BinarySearchTree.Logic.Processors
 {
     public class UpdateTreeService
     {
+        public TreeNode InorderSuccessor(TreeNode root, TreeNode p)
+        {
+            TreeNode successor = null;
+
+            while (root != null)
+            {
+                if (p.val >= root.val)
+                {
+                    root = root.right;
+                }
+                else
+                {
+                    successor = root;
+                    root = root.left;
+                }
+            }
+            return successor;
+        }
+
         public TreeNode InsertIntoBSTRecursive(TreeNode root, int val)
         {
             if (root == null)

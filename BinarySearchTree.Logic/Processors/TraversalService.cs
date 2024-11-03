@@ -119,6 +119,43 @@ namespace BinarySearchTree.Logic.Processors
             return root;
         }
 
+        public TreeNode InsertIntoBST(TreeNode root, int val)
+        {
+            var node = root;
+            while (node != null)
+            {
+                if (node.val < val)
+                {
+                    if (node.right != null)
+                    {
+                        node = node.right;
+                    }
+                    else
+                    {
+                        var newNode = new TreeNode();
+                        newNode.val = val;
+                        node.right = newNode;
+                        return root;
+                    }
+                }
+                else
+                {
+                    if (node.left != null)
+                    {
+                        node = node.left;
+                    }
+                    else
+                    {
+                        var newNode = new TreeNode();
+                        newNode.val = val;
+                        node.left = newNode;
+                        return root;
+                    }
+                }
+            }
+            return new TreeNode();
+        }
+
 
     }
 }
