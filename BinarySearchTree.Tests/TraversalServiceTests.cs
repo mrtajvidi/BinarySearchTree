@@ -1,5 +1,6 @@
 using BinarySearchTree.Logic.Models;
 using BinarySearchTree.Logic.Processors;
+using System.Collections.Generic;
 using Xunit;
 
 namespace BinarySearchTree.Tests
@@ -39,6 +40,49 @@ namespace BinarySearchTree.Tests
             var actual = _traversalService.LevelOrderTraversal(root);
             Assert.Equal("201003501525035222", actual);
         }
+
+        [Fact]
+        public void BT_ZigzagLevelOrderTraversal_ReturnTrue()
+        {
+            var root = new TreeNode { val = 3 };
+            var node9 = new TreeNode { val = 9 };
+            var node20 = new TreeNode { val = 20 };
+            var node15 = new TreeNode { val = 15 };
+            var node7 = new TreeNode { val = 7 };;
+
+            root.left = node9;
+            root.right = node20;
+
+            node20.left = node15;
+            node20.right = node7;
+
+            var actual = _traversalService.ZigzagLevelOrder(root);
+            var expected = new List<List<int>>(){ new List<int>(){ 3 }, new List<int>() { 20, 9 }, new List<int>() { 15, 7 } };
+
+            Assert.Equal(expected.Count, actual.Count);
+        }
+
+        [Fact]
+        public void BT_ZigzagLevelOrderTraversal_ReturnTrue2()
+        {
+            var root = new TreeNode { val = 1 };
+            var node2 = new TreeNode { val = 2 };
+            var node3 = new TreeNode { val = 3 };
+            var node4 = new TreeNode { val = 4 };
+            var node5 = new TreeNode { val = 5 }; ;
+
+            root.left = node2;
+            root.right = node3;
+
+            node2.left = node4;
+            node3.right = node5;
+
+            var actual = _traversalService.ZigzagLevelOrder(root);
+            var expected = new List<List<int>>() { new List<int>() { 3 }, new List<int>() { 20, 9 }, new List<int>() { 15, 7 } };
+
+            Assert.Equal(expected.Count, actual.Count);
+        }
+
 
         [Fact]
         public void BT_PreOrderTraversal_ReturnTrue()

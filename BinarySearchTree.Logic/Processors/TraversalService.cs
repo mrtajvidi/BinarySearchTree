@@ -156,6 +156,57 @@ namespace BinarySearchTree.Logic.Processors
             return new TreeNode();
         }
 
+        public IList<IList<int>> ZigzagLevelOrder(TreeNode root)
+        {
+            var q = new Queue<TreeNode>();
+
+            var output = new List<IList<int>>();
+
+            var level = 0;
+            q.Enqueue(root);
+
+            while (q.Count != 0)
+            {
+                var currentList = new List<int>();
+                var length = q.Count;
+
+                for (int i = 0; i < length; i++)
+                {
+                    var node = q.Dequeue();
+
+                    currentList.Add(node.val ?? 0);
+
+                    if (level % 2 == 0)
+                    {
+                        if (node.left != null)
+                        {
+                            q.Enqueue(node.left);
+                        }
+
+                        if (node.right != null)
+                        {
+                            q.Enqueue(node.right);
+                        }
+                    }
+                    else
+                    {
+                        if (node.right != null)
+                        {
+                            q.Enqueue(node.right);
+                        }
+
+                        if (node.left != null)
+                        {
+                            q.Enqueue(node.left);
+                        }
+                    }
+                }
+                level++;
+                output.Add(currentList);
+            }
+
+            return output;
+        }
 
     }
 }
